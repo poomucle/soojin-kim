@@ -1,0 +1,36 @@
+
+# レスポンス
+
+## 成功時
+
+HTTP/1.1 200 OK
+
+|Field|Type|Description|
+|:--|:--|:--|
+|access_token|string|<br>|
+|client_id|string|<br>|
+|expires_in|int|token will expire in `expires_in` seconds later. so you should check if `expires_in` is greater than 0. (when a cached token is returned, `expires_in` can have negative value)|
+|scope|string|<br>|
+|user_id|string|<br>|
+
+### 例
+
+```
+Content-Type: application/json
+
+\{
+    "access_token":"20000001210144901000002386934220",
+    "client_id":"sample",
+    "expires_in":86400,
+    "scope":"",
+    "user_id":"001273060620003955204103001344838012"
+\}
+```
+
+## 失敗時
+
+HTTP/1.1 400 Bad Request
+> invalid request parameter (invalid access_token)
+
+HTTP/1.1 401 Unauthorized
+> invalid session
